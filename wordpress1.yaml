@@ -1,0 +1,19 @@
+---
+- name: Install wordpress
+  hosts: all
+  become: true
+  become_method: sudo
+  user: ec2-user
+
+
+  tasks: 
+  - name: Install httpd
+    when: ( ansible_facts['distribution'] == 'Amazon' )
+    package: 
+      name: "{{ item }}"
+      state: present
+    with items: 
+    - httpd
+    - mysql
+    - php-mysql
+    - wget
