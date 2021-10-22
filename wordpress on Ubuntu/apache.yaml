@@ -1,21 +1,4 @@
-- name: Deploy on OpenStack
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Deploy an instance
-      os_server:
-        state: present
-        name: lamp01
-        image: Ubuntu 16.04 LTS
-        key_name: MY_SSH_KEY
-        wait: yes
-        flavor: c2.small
-        network: public
-        meta:
-          hostname: lamp01.localdomain
-
-
-
+---
 - name: install apache & php
   remote_user: ubuntu
   hosts: all
